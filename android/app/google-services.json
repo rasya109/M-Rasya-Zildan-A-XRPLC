@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "214484290021",
+    "project_id": "nusantara-32ec0",
+    "storage_bucket": "nusantara-32ec0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214484290021:android:21088252d83f4eb2e8470c",
+        "android_client_info": {
+          "package_name": "com.example.nusantaraa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnI3YQqO4WW_NO5fn5sK0pmBaZln_DO7I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,256 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:nusantaraa/screens/profile_user.dart';
+import 'package:nusantaraa/screens/search_beach.dart';
+import 'package:nusantaraa/screens/search_crater.dart';
+import 'package:nusantaraa/screens/search_mount.dart';
+import 'package:nusantaraa/screens/search_river.dart';
+import 'package:nusantaraa/screens/search_waterfall.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: SearchPage(),
+    );
+  }
+}
+
+class SearchPage extends StatelessWidget {
+  final List<String> texts = ['Mount', 'Beach', 'Crater', 'Waterfall', 'River'];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(246, 246, 246, 1),
+      body: Container(
+        margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    'Search',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.poppins(
+                      color: Color.fromARGB(255, 111, 119, 137),
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      right: 16.0,
+                    ),
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/profile.png',
+                        fit: BoxFit.cover,
+                        width: 38,
+                        height: 38,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 16.0),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Icon(Icons.search),
+                      SizedBox(width: 8.0),
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Search...',
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 30.0),
+            Text(
+              'Category',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            // Carousel Horizontal
+            Container(
+              height: 90.0, // Sesuaikan tinggi sesuai kebutuhan
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: texts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Handle navigasi ke halaman berbeda berdasarkan gambar yang dipilih
+                      switch (index) {
+                        case 0:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchMount(), // Ganti dengan halaman yang sesuai
+                            ),
+                          );
+                          break;
+                        case 1:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchBeach(), // Ganti dengan halaman yang sesuai
+                            ),
+                          );
+                          break;
+                        case 2:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchCrater(), // Ganti dengan halaman yang sesuai
+                            ),
+                          );
+                          break;
+                        case 3:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchWaterfall(), // Ganti dengan halaman yang sesuai
+                            ),
+                          );
+                          break;
+                        case 4:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SearchRiver(), // Ganti dengan halaman yang sesuai
+                            ),
+                          );
+                          break;
+                        default:
+                          break;
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 60.0,
+                            width: 60.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/category_$index.png',
+                                ), // Ganti dengan path gambar yang sesuai
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 8.0),
+                          Text(
+                            texts[index],
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+                height:
+                    20.0), // Tambahkan jarak antara carousel dan teks "Recomended"
+            Text(
+              'Recommend',
+              style: GoogleFonts.poppins(
+                fontSize: 24.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+ Image.asset('assets/RanuKumbolo.png'),
+            Image.asset('assets/Ijen Crater.png'),
+            Image.asset('assets/Raja Ampat.png'),
+            Image.asset('assets/Moaunt Bromo.png'),
+            Image.asset('assets/Jagir.png'),
+            Image.asset('assets/pasih uug.png'),
+            Image.asset('assets/kalimutu.png'),
+            Image.asset('assets/ayung river.png'),
+            Image.asset('assets/rinjani.png'),
+
+
+             image: AssetImage('assets/Ijen Crater.png'),
+              image: AssetImage('assets/Raja Ampat.png'),
+              image: AssetImage('assets/Moaunt Bromo.png'),
+              image: AssetImage('assets/Jagir.png'), 
+              image: AssetImage('assets/RanuKumbolo.png'), 
+
+
+
+              GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailRaja()),
+                );
+              },
+              child: Image.asset('assets/Raja Ampat.png'),
+            ),
+
+
+ GestureDetector(
+              onTap: () {
+                // Tambahkan logika untuk tombol pada bagian bawah di sini
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailRanuKumbolo()),
+                );
+              },
+              child: Image.asset('assets/RanuKumbolo.png'),
+            ),
